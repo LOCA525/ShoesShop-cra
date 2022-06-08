@@ -1,10 +1,30 @@
 .App {
   text-align: center;
 }
+.container {
+  padding: 20px;
+}
+
+.main-bg {
+  height: 350px;
+  background-image: url("../src/img/스크린샷\ 2022-06-07\ 오후\ 4.54.59.png");
+  /* background-image: url("../src/img/KakaoTalk_Photo_2022-06-07-18-29-20.jpeg"); */
+
+  background-size: cover;
+  background-position: center;
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.black-nav {
+  display: flex;
+  background: black;
+  width: 100%;
+  color: white;
+  padding-left: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
