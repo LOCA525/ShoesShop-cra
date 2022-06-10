@@ -9,7 +9,7 @@ import axios from "axios";
 
 function App() {
   let [shoes, setShoes] = useState(data);
-  let [clickCounter, setClickCounter] = useState(0);
+
   let navigate = useNavigate();
   let { id } = useParams();
   return (
