@@ -19,29 +19,5 @@ let data = [
     content: "Born in the States",
     price: 130000,
   },
-  {
-    id: 2,
-    title: "Grey Yordan",
-    content: "Born in the States",
-    price: 130000,
-  },
-  {
-    id: 2,
-    title: "Grey Yordan",
-    content: "Born in the States",
-    price: 130000,
-  },
-  {
-    id: 2,
-    title: "Grey Yordan",
-    content: "Born in the States",
-    price: 130000,
-  },
-  {
-    id: 2,
-    title: "Grey Yordan",
-    content: "Born in the States",
-    price: 130000,
-  },
 ];
 export default data;

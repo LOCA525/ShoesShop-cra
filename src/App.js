@@ -1,14 +1,17 @@
 import "./App.css";
-import { Button, Navbar, Container, Nav, Row, Col } from "react-bootstrap";
+import { Button, Navbar, Container, Nav, Row, Col, NavItem } from "react-bootstrap";
 import { useState } from "react";
 import data from "./data.js";
 import Detail from "./routes/Detail.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
+  let [clickCounter, setClickCounter] = useState(0);
   let navigate = useNavigate();
-
+  let { id } = useParams();
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -38,22 +41,50 @@ function App() {
         <Route
           path="/"
           element={
-            <div>
-              <div className="main-bg"></div>
-              <Row xs={3} md={3} lg={3}>
-                {shoes.map((a, i) => {
-                  return <Card shoes={shoes[i]} i={i}></Card>;
-                })}
-              </Row>
-            </div>
+            <>
+              <div>
+                <div className="main-bg"></div>
+                <Row xs={3} md={3} lg={3}>
+                  {shoes.map((a, i) => {
+                    return <Card shoes={shoes[i]} i={i}></Card>;
+                  })}
+                  ;
+                </Row>
+              </div>
+              <button
+                onClick={() => {
+                  axios.get("https://codingapple1.github.io/shop/data2.json").then((결과) => {
+                    console.log(결과.data);
+                    console.log(shoes);
+                    let copy = [...shoes, ...결과.data];
+                    setShoes(copy);
+                  });
+                }}
+              >
+                더보기
+              </button>
+            </>
           }
         />
-        <Route path="/detail" element={Detail} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" element={<div>위치</div>} />
         </Route>
+        <Route path="/event" element={<Event />}>
+          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
+          <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
+        </Route>
       </Routes>
+    </div>
+  );
+}
+
+function Event() {
+  return (
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet></Outlet>
     </div>
   );
 }
