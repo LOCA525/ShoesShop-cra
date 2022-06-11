@@ -6,6 +6,7 @@ import Detail from "./routes/Detail.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Cart from "./routes/Cart.js";
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -46,7 +47,7 @@ function App() {
                 <div className="main-bg"></div>
                 <Row xs={3} md={3} lg={3}>
                   {shoes.map((a, i) => {
-                    return <Card shoes={shoes[i]} i={i}></Card>;
+                    return <Card shoes={shoes[i]} key={i} i={i}></Card>;
                   })}
                   ;
                 </Row>
@@ -75,6 +76,8 @@ function App() {
           <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
           <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
+
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </div>
   );

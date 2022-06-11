@@ -16,10 +16,8 @@ function Detail(props) {
 
   useEffect(() => {
     setFade2("end");
-    return () => {
-      setFade2("");
-    };
-  });
+    console.log("aa");
+  }, []);
 
   useEffect(() => {
     let a = setTimeout(() => {
