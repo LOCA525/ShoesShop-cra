@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Nav, TabContent } from "react-bootstrap";
+import { addItem } from "../store";
+import { useDispatch } from "react-redux";
 
 function Detail(props) {
   let [alert, setAlert] = useState(true);
@@ -8,6 +10,7 @@ function Detail(props) {
   let [num, setNum] = useState("");
   let [탭, set탭] = useState(0);
   let [fade2, setFade2] = useState("");
+  let dispatch = useDispatch();
   useEffect(() => {
     if (isNaN(num) == true) {
       prompt("그러지마세요");
@@ -63,7 +66,14 @@ function Detail(props) {
             <h4 className="pt-5">{찾은상품.title}</h4>
             <p>{찾은상품.content}</p>
             <p>{찾은상품.price}원</p>
-            <button className="btn btn-danger">주문하기</button>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                // dispatch(addItem({id:찾은상품.id,name:'hi'))
+              }}
+            >
+              주문하기
+            </button>
           </div>
         </div>
       </div>
