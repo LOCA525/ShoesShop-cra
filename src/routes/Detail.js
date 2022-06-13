@@ -19,7 +19,6 @@ function Detail(props) {
 
   useEffect(() => {
     setFade2("end");
-    console.log("aa");
   }, []);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ function Detail(props) {
   return (
     <div className={`detailPage start ${fade2}`}>
       <div className="container">
-        {/* {alert === true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null} */}
         <div>{counter}</div>
         <button
           onClick={() => {
@@ -125,15 +123,6 @@ function TabContent2({ 탭, shoes }) {
       setFade("");
     };
   }, [탭]);
-  // if (탭 === 0) {
-  //   return <div>내용0</div>;
-  // }
-  // if (탭 === 1) {
-  //   return <div>내용1</div>;
-  // }
-  // if (탭 === 2) {
-  //   return <div>내용2</div>;
-  // }
 
   return <div className={`start ${fade}`}>{[<div>{shoes[0].title}</div>, <div>내용1</div>, <div>내용2</div>][탭]}</div>;
 }
