@@ -1,12 +1,17 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addCount, changeAge } from "./../store.js";
+import { useState } from "react";
+function Child() {
+  return <div>자식임</div>;
+}
 
 function Cart() {
   let state = useSelector((state) => {
     return state;
   });
   let dispatch = useDispatch();
+  let [count, setCount] = useState(0);
   return (
     <div>
       <h6>

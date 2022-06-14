@@ -6,11 +6,24 @@ import { useDispatch } from "react-redux";
 
 function Detail(props) {
   let [alert, setAlert] = useState(true);
+  let 찾은상품 = props.shoes.find((item) => {
+    return item.id == id;
+  });
   let [counter, setCounter] = useState(0);
   let [num, setNum] = useState("");
   let [탭, set탭] = useState(0);
   let [fade2, setFade2] = useState("");
   let dispatch = useDispatch();
+
+  useEffect(() => {
+    let 꺼낸거 = localStorage.setItem("watched", [찾은상품.id]);
+    꺼낸거 = JSON.parse(꺼낸거);
+    꺼낸거.push(찾은상품.id);
+    꺼낸거 = new Set(꺼낸거);
+    꺼낸거 = Array.from(꺼낸거);
+    localStorage.setItem("watched", JSON.stringify(꺼낸거));
+  }, []);
+
   useEffect(() => {
     if (isNaN(num) == true) {
       prompt("그러지마세요");
@@ -31,10 +44,6 @@ function Detail(props) {
   }, []);
 
   let { id } = useParams();
-
-  let 찾은상품 = props.shoes.find((item) => {
-    return item.id == id;
-  });
 
   return (
     <div className={`detailPage start ${fade2}`}>
